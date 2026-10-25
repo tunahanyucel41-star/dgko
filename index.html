@@ -1,1 +1,404 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#171126">
+<title>İyi ki doğdun ✨</title>
 
+<style>
+:root {
+  --pink: #e8a9c4;
+  --green: #a8d8b5;
+  --cream: #f8edf3;
+  --dark: #100d1e;
+}
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--cream);
+  font-family: Georgia, "Times New Roman", serif;
+  background: radial-gradient(ellipse at 50% 40%, #30213c, var(--dark) 75%);
+  overflow-x: hidden;
+  transition: background 1s ease;
+}
+body.pink-theme {
+  color: #20141c;
+  background: radial-gradient(ellipse at center, #e8b3ca, #563447 100%);
+}
+#stars {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+.glow {
+  position: fixed;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: .15;
+  pointer-events: none;
+  background: var(--green);
+  top: -100px;
+  left: -100px;
+}
+.glow.two {
+  background: var(--pink);
+  top: auto;
+  left: auto;
+  right: -100px;
+  bottom: -130px;
+}
+#scene {
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
+  padding: 24px;
+  display: grid;
+  place-items: center;
+}
+.card {
+  width: min(760px, 100%);
+  padding: clamp(28px, 6vw, 58px);
+  text-align: center;
+  border: 1px solid #a8d8b54a;
+  border-radius: 28px;
+  background: #211a2bd9;
+  box-shadow: 0 25px 90px #0005, 0 0 40px #a8d8b511;
+  backdrop-filter: blur(14px);
+  animation: enter .8s cubic-bezier(.2,.8,.2,1) both;
+}
+.pink-theme .card {
+  color: #20141c;
+  background: #f8dce9e8;
+  border-color: #fff8;
+}
+.message {
+  font-size: clamp(1.2rem, 3vw, 1.85rem);
+  line-height: 1.75;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  margin: 0 auto 30px;
+}
+.eyebrow {
+  color: var(--green);
+  font-family: Arial, sans-serif;
+  font-size: .75rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.pink-theme .eyebrow { color: #8b3d61; }
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+.btn {
+  font: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 13px 24px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: var(--pink);
+  color: #211522;
+  cursor: pointer;
+  transition: transform .25s, box-shadow .25s, background .25s;
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px #e8a9c444;
+}
+.btn:active { transform: scale(.97); }
+.btn.secondary {
+  color: var(--cream);
+  background: #ffffff0b;
+  border-color: #e8a9c477;
+}
+.pink-theme .btn.secondary {
+  color: #20141c;
+  border-color: #8b3d6177;
+}
+.footnote {
+  margin-top: 22px;
+  font: 12px Arial, sans-serif;
+  opacity: .6;
+}
+#music {
+  position: fixed;
+  z-index: 3;
+  bottom: 12px;
+  right: 12px;
+  width: 200px;
+  padding: 8px;
+  border-radius: 14px;
+  border: 1px solid #ffffff24;
+  background: #171126ed;
+  box-shadow: 0 8px 30px #0005;
+  font: 12px Arial, sans-serif;
+}
+#music-title {
+  margin: 0 0 7px;
+  color: var(--pink);
+}
+#player { width: 100%; aspect-ratio: 16 / 9; }
+#player iframe { width: 100%; height: 100%; }
+#music-hint { margin: 6px 0 0; opacity: .7; }
+@keyframes enter {
+  from { opacity: 0; transform: translateY(18px) scale(.985); filter: blur(4px); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+@keyframes twinkle {
+  0%,100% { opacity: .25; transform: scale(.8); }
+  50% { opacity: 1; transform: scale(1.4); }
+}
+@media(max-width: 540px) {
+  #scene { padding: 16px 16px 150px; }
+  .card { padding: 28px 20px; }
+  #music { width: 155px; }
+  .btn { padding: 12px 17px; }
+}
+@media(prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+
+<body>
+<canvas id="stars"></canvas>
+<div class="glow"></div>
+<div class="glow two"></div>
+
+<main id="scene">
+  <section class="card" aria-live="polite">
+    <div class="eyebrow">✦ sana özel ✦</div>
+    <p class="message" id="message">Bugün günlerden ne?</p>
+    <div class="buttons" id="buttons"></div>
+    <div class="footnote">Biraz yıldız, biraz hatıra, bolca iyi ki. ✨</div>
+  </section>
+</main>
+
+<div id="music">
+  <p id="music-title">♫ Sana eşlik eden şarkılar</p>
+  <div id="player"></div>
+  <p id="music-hint">Şarkılar ilgili butona bastığında başlar.</p>
+</div>
+
+<script>
+/* Üç YouTube videosu */
+const songs = {
+  first: "NE3x_sct784",
+  second: "gzqbGRvjGVk",
+  final: "h5oHhGlWKf0"
+};
+
+const message = document.getElementById("message");
+const buttons = document.getElementById("buttons");
+const musicTitle = document.getElementById("music-title");
+
+let player = null;
+let apiReady = false;
+let pendingSong = null;
+let currentSong = null;
+
+/* Sayfaların akışı */
+const pages = {
+  start: {
+    theme: "dark",
+    text: "Bugün günlerden ne?",
+    buttons: [["29 Kasım ✨", "month"]]
+  },
+  month: {
+    theme: "dark",
+    text: "Bugüne sadece 29 Kasım demek yakışmaz.\n\nBugün birisi doğmuş, iyi ki doğmuş. Dimi, çok şanslı birisi bence bu kişi?",
+    buttons: [["dimi ya", "birthdayYes"], ["yok bee", "no1"]]
+  },
+  no1: {
+    theme: "dark",
+    text: "Hadi oradan yalancı seni, doğru dürüst cevapla. 😌",
+    buttons: [["dimi ya", "birthdayYes"], ["yok bee", "no2"]]
+  },
+  no2: {
+    theme: "dark",
+    text: "Bu sefer yok bee yok mu? Noldu, tıkla hadi. 😂",
+    buttons: [["dimi ya", "birthdayYes"]]
+  },
+  wish: {
+    theme: "pink",
+    text: "Dilerim yeni yaşın sana tarifsiz mutluluklar, huzur dolu günler ve yüzünü hep güldürecek güzellikler getirir.\n\nKalbinden geçen tüm güzel dileklerin birer birer gerçeğe dönüşsün. Hayat bazen yorucu olsa da umarım karşına hep içini ısıtan insanlar ve sana iyi ki dedirten anılar çıkar.\n\nGülüşün hiç solmasın, kalbin hiçbir zaman güzelliklere olan inancını kaybetmesin. ❤️",
+    buttons: [["yiaaaa 💗", "surprise"]]
+  },
+  surprise: {
+    theme: "dark",
+    text: "Beklemiyordun dimi? 🌙",
+    buttons: [["Evet, travmam tetiklendi! Bir daha olmasın!!", "nextSong"]]
+  },
+  nextSong: {
+    theme: "dark",
+    text: "Aşırı kroca oldu ya... Tıkla bir daha, şu butona sinirim bozuldu. 😂",
+    buttons: [["aşırı kroca oldu ya, tıkla bir daha", "thirdSong"]]
+  },
+  grown: {
+    theme: "dark",
+    text: "Ulan büyüdün bee 🥹",
+    buttons: [["valla yaa", "grownReply"]]
+  },
+  grownReply: {
+    theme: "dark",
+    text: "Valla yaa mı? Ulan daha yaşın kaç sahtekâr, hâlâ küçük civcivsin gözümde. Her zaman küçük kardeş olacaksın gözümde. :D",
+    buttons: [["yaaa söyleme öyle", "last"]]
+  },
+  last: {
+    theme: "dark",
+    text: "Sus kız, konuşma. Şarkıyı dinle de overlok saatine sen de dahil ol. 💚",
+    buttons: [["Son şarkıyı tekrar başlat ♫", "replayFinal"]]
+  }
+};
+
+function render(name) {
+  const page = pages[name];
+  document.body.classList.toggle("pink-theme", page.theme === "pink");
+
+  /* Kartın geçiş animasyonunu yeniden oynat */
+  const card = document.querySelector(".card");
+  card.style.animation = "none";
+  void card.offsetWidth;
+  card.style.animation = "";
+
+  message.textContent = page.text;
+  buttons.innerHTML = "";
+
+  page.buttons.forEach(([label, action], index) => {
+    const btn = document.createElement("button");
+    btn.className = "btn" + (index === 1 ? " secondary" : "");
+    btn.textContent = label;
+    btn.addEventListener("click", () => act(action));
+    buttons.appendChild(btn);
+  });
+}
+
+function playSong(which) {
+  currentSong = which;
+  musicTitle.textContent = "♫ Şimdi çalıyor";
+  if (apiReady && player) {
+    player.loadVideoById({ videoId: songs[which], startSeconds: 0 });
+    player.playVideo();
+  } else {
+    pendingSong = which;
+    document.getElementById("music-hint").textContent =
+      "Müzik yükleniyor; birkaç saniye bekle.";
+  }
+}
+
+function act(action) {
+  switch (action) {
+    case "month": render("month"); break;
+    case "birthdayYes": render("wish"); break;
+    case "no1": render("no1"); break;
+    case "no2": render("no2"); break;
+    case "surprise":
+      render("surprise");
+      playSong("first");
+      break;
+    case "nextSong":
+      render("nextSong");
+      playSong("second");
+      break;
+    case "thirdSong":
+      render("grown");
+      playSong("final");
+      break;
+    case "grownReply": render("grownReply"); break;
+    case "last": render("last"); break;
+    case "replayFinal": playSong("final"); break;
+  }
+}
+
+/* Yıldızlı gökyüzü */
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+let starList = [];
+
+function resizeStars() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = innerWidth * dpr;
+  canvas.height = innerHeight * dpr;
+  canvas.style.width = innerWidth + "px";
+  canvas.style.height = innerHeight + "px";
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  starList = Array.from({ length: Math.min(150, Math.floor(innerWidth / 7)) }, () => ({
+    x: Math.random() * innerWidth,
+    y: Math.random() * innerHeight,
+    r: Math.random() * 1.7 + .3,
+    a: Math.random(),
+    speed: Math.random() * .012 + .003
+  }));
+}
+
+function drawStars() {
+  ctx.clearRect(0, 0, innerWidth, innerHeight);
+  for (const s of starList) {
+    s.a += s.speed;
+    const alpha = .25 + (Math.sin(s.a) + 1) * .3;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(207,235,213,${alpha})`;
+    ctx.shadowBlur = 8;
+    ctx.shadowColor = "#a8d8b5";
+    ctx.fill();
+  }
+  ctx.shadowBlur = 0;
+  requestAnimationFrame(drawStars);
+}
+
+window.addEventListener("resize", resizeStars);
+resizeStars();
+drawStars();
+
+/* YouTube müzik oynatıcısı */
+const tag = document.createElement("script");
+tag.src = "https://www.youtube.com/iframe_api";
+document.head.appendChild(tag);
+
+window.onYouTubeIframeAPIReady = function () {
+  player = new YT.Player("player", {
+    width: "200",
+    height: "113",
+    videoId: songs.first,
+    playerVars: {
+      autoplay: 0,
+      controls: 1,
+      playsinline: 1,
+      rel: 0
+    },
+    events: {
+      onReady: function () {
+        apiReady = true;
+        if (pendingSong) {
+          const song = pendingSong;
+          pendingSong = null;
+          player.loadVideoById({ videoId: songs[song], startSeconds: 0 });
+          player.playVideo();
+        }
+      },
+      onError: function () {
+        document.getElementById("music-hint").textContent =
+          "Bu video oynatılamadı; YouTube'da erişilebilirliğini kontrol et.";
+      }
+    }
+  });
+};
+
+render("start");
+</script>
+</body>
+</html>
