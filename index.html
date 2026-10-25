@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -5,398 +6,240 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#171126">
 <title>İyi ki doğdun ✨</title>
-
 <style>
-:root {
-  --pink: #e8a9c4;
-  --green: #a8d8b5;
-  --cream: #f8edf3;
-  --dark: #100d1e;
-}
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  color: var(--cream);
-  font-family: Georgia, "Times New Roman", serif;
-  background: radial-gradient(ellipse at 50% 40%, #30213c, var(--dark) 75%);
-  overflow-x: hidden;
-  transition: background 1s ease;
-}
-body.pink-theme {
-  color: #20141c;
-  background: radial-gradient(ellipse at center, #e8b3ca, #563447 100%);
-}
-#stars {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
-.glow {
-  position: fixed;
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: .15;
-  pointer-events: none;
-  background: var(--green);
-  top: -100px;
-  left: -100px;
-}
-.glow.two {
-  background: var(--pink);
-  top: auto;
-  left: auto;
-  right: -100px;
-  bottom: -130px;
-}
-#scene {
-  position: relative;
-  z-index: 1;
-  min-height: 100svh;
-  padding: 24px;
-  display: grid;
-  place-items: center;
-}
-.card {
-  width: min(760px, 100%);
-  padding: clamp(28px, 6vw, 58px);
-  text-align: center;
-  border: 1px solid #a8d8b54a;
-  border-radius: 28px;
-  background: #211a2bd9;
-  box-shadow: 0 25px 90px #0005, 0 0 40px #a8d8b511;
-  backdrop-filter: blur(14px);
-  animation: enter .8s cubic-bezier(.2,.8,.2,1) both;
-}
-.pink-theme .card {
-  color: #20141c;
-  background: #f8dce9e8;
-  border-color: #fff8;
-}
-.message {
-  font-size: clamp(1.2rem, 3vw, 1.85rem);
-  line-height: 1.75;
-  white-space: pre-line;
-  overflow-wrap: anywhere;
-  margin: 0 auto 30px;
-}
-.eyebrow {
-  color: var(--green);
-  font-family: Arial, sans-serif;
-  font-size: .75rem;
-  letter-spacing: .28em;
-  text-transform: uppercase;
-  margin-bottom: 18px;
-}
-.pink-theme .eyebrow { color: #8b3d61; }
-.buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-}
-.btn {
-  font: inherit;
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 13px 24px;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  background: var(--pink);
-  color: #211522;
-  cursor: pointer;
-  transition: transform .25s, box-shadow .25s, background .25s;
-}
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px #e8a9c444;
-}
-.btn:active { transform: scale(.97); }
-.btn.secondary {
-  color: var(--cream);
-  background: #ffffff0b;
-  border-color: #e8a9c477;
-}
-.pink-theme .btn.secondary {
-  color: #20141c;
-  border-color: #8b3d6177;
-}
-.footnote {
-  margin-top: 22px;
-  font: 12px Arial, sans-serif;
-  opacity: .6;
-}
-#music {
-  position: fixed;
-  z-index: 3;
-  bottom: 12px;
-  right: 12px;
-  width: 200px;
-  padding: 8px;
-  border-radius: 14px;
-  border: 1px solid #ffffff24;
-  background: #171126ed;
-  box-shadow: 0 8px 30px #0005;
-  font: 12px Arial, sans-serif;
-}
-#music-title {
-  margin: 0 0 7px;
-  color: var(--pink);
-}
-#player { width: 100%; aspect-ratio: 16 / 9; }
-#player iframe { width: 100%; height: 100%; }
-#music-hint { margin: 6px 0 0; opacity: .7; }
-@keyframes enter {
-  from { opacity: 0; transform: translateY(18px) scale(.985); filter: blur(4px); }
-  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
-}
-@keyframes twinkle {
-  0%,100% { opacity: .25; transform: scale(.8); }
-  50% { opacity: 1; transform: scale(1.4); }
-}
-@media(max-width: 540px) {
-  #scene { padding: 16px 16px 150px; }
-  .card { padding: 28px 20px; }
-  #music { width: 155px; }
-  .btn { padding: 12px 17px; }
-}
-@media(prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; }
-}
+:root{--pink:#e8a9c4;--pink-light:#f3c8d9;--ink:#171019;--green:#a8d8b5}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Georgia,"Times New Roman",serif}
+body{min-height:100vh;overflow:hidden;color:#f7eaf1;transition:background .7s ease}
+button{font:inherit;cursor:pointer;border:0;transition:transform .18s ease,filter .18s ease}
+button:hover{transform:translateY(-2px);filter:brightness(1.06)}
+button:active{transform:scale(.98)}
+#scene{position:relative;min-height:100vh;display:grid;place-items:center;padding:22px;isolation:isolate;overflow:hidden}
+.sky,.lines{position:absolute;inset:0;pointer-events:none;z-index:-2}
+body.a1{background:radial-gradient(ellipse at 50% 42%,#29203e 0%,#1b1530 48%,#100d1e 100%)}
+.sky{opacity:.95;background:
+radial-gradient(circle at 12% 18%,rgba(182,226,190,.65) 0 1px,transparent 2px),
+radial-gradient(circle at 78% 14%,rgba(234,211,136,.75) 0 1px,transparent 2px),
+radial-gradient(circle at 88% 73%,rgba(168,216,181,.55) 0 1px,transparent 2px),
+radial-gradient(circle at 23% 82%,rgba(234,211,136,.55) 0 1px,transparent 2px),
+radial-gradient(circle at 52% 9%,rgba(168,216,181,.6) 0 1px,transparent 2px);
+background-size:137px 151px,181px 167px,211px 193px,173px 187px,239px 223px}
+.star-map{position:absolute;inset:0;width:100%;height:100%;z-index:-1;opacity:.72;pointer-events:none}
+.star-map path{fill:none;stroke:rgba(168,216,181,.25);stroke-width:1}
+.star-map .heart-line{stroke:rgba(168,216,181,.36);stroke-width:1.15}
+.star-map circle{fill:#e9d38a;stroke:#a8d8b5;stroke-width:2;filter:drop-shadow(0 0 5px rgba(168,216,181,.4))}
+.star-map circle.small{fill:#a8d8b5;stroke:#dcebdc;stroke-width:1}
+.sparkle{position:absolute;width:3px;height:3px;border-radius:50%;background:#c5e7cb;box-shadow:0 0 8px #9ccda7;animation:twinkle 3.8s infinite ease-in-out}
+@keyframes twinkle{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:.9;transform:scale(1.35)}}
+body.a2{background:radial-gradient(ellipse at center,#171216 0%,#080709 75%)}
+.lines{z-index:-1;opacity:.48;background:repeating-conic-gradient(from 0deg at 50% 50%,transparent 0deg 8deg,rgba(222,153,184,.13) 8.15deg 8.3deg,transparent 8.45deg 16deg);mask-image:radial-gradient(ellipse at center,transparent 0%,black 45%,black 100%)}
+.card{width:min(760px,100%);position:relative;text-align:center;padding:clamp(26px,5vw,54px) clamp(20px,5vw,46px);border-radius:28px;animation:appear .55s ease both}
+.a1 .card{background:rgba(35,27,49,.78);border:1px solid rgba(177,220,185,.23);box-shadow:0 20px 70px rgba(0,0,0,.24),0 0 35px rgba(156,205,167,.06);backdrop-filter:blur(8px)}
+.a2 .card{background:rgba(224,157,186,.96);color:#171019;border:1px solid rgba(255,221,235,.8);box-shadow:0 20px 65px rgba(0,0,0,.4),0 0 35px rgba(224,157,186,.1);border-radius:48% 48% 35px 35px / 18% 18% 35px 35px}
+.message{font-size:clamp(1.2rem,2.8vw,1.8rem);line-height:1.65;white-space:pre-line;margin:0 auto 26px;max-width:650px;overflow-wrap:anywhere}
+.a1 .message{color:#f6eaf5;text-shadow:0 0 18px rgba(193,224,198,.12)}
+.a2 .message{color:#171019;font-size:clamp(1rem,2.3vw,1.35rem);line-height:1.75}
+.buttons{display:flex;justify-content:center;gap:13px;flex-wrap:wrap}
+.btn{padding:13px 23px;max-width:100%;border-radius:999px;background:var(--pink);color:#171019;box-shadow:0 6px 20px rgba(0,0,0,.14);font-weight:700;font-size:1rem;overflow-wrap:anywhere}
+.btn.secondary{background:rgba(232,169,196,.15);color:#f7eaf1;border:1px solid rgba(232,169,196,.65);box-shadow:none}
+.a2 .btn{background:#171019;color:#f3c8d9}
+.a2 .btn.secondary{background:rgba(23,16,25,.08);border:1px solid rgba(23,16,25,.45);color:#171019}
+#replay{display:none;margin:18px auto 0}
+@keyframes appear{from{opacity:0;transform:translateY(10px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:480px){.card{padding:28px 19px}.buttons{gap:10px}.btn{padding:12px 17px;font-size:.94rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
+<body class="a1">
+<div id="scene">
+  <div class="sky"></div>
+  <div class="lines"></div>
 
-<body>
-<canvas id="stars"></canvas>
-<div class="glow"></div>
-<div class="glow two"></div>
+  <svg class="star-map" viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g>
+      <path d="M120 155 L210 205 L290 145 L365 210 L430 175 M650 120 L710 180 L805 155 L870 235 M120 590 L210 530 L290 610 L365 555 M690 600 L760 540 L850 585 L910 515"/>
+      <path class="heart-line" d="M500 470 C455 420 370 370 370 300 C370 235 455 220 500 285 C545 220 630 235 630 300 C630 370 545 420 500 470 Z"/>
+      <path class="heart-line" d="M370 300 L430 325 L500 285 L570 325 L630 300 M430 325 L455 390 L500 420 L545 390 L570 325"/>
+      <circle cx="120" cy="155" r="4"/><circle cx="210" cy="205" r="4" class="small"/><circle cx="290" cy="145" r="4"/><circle cx="365" cy="210" r="4" class="small"/><circle cx="430" cy="175" r="4"/>
+      <circle cx="650" cy="120" r="4"/><circle cx="710" cy="180" r="4" class="small"/><circle cx="805" cy="155" r="4"/><circle cx="870" cy="235" r="4" class="small"/>
+      <circle cx="120" cy="590" r="4"/><circle cx="210" cy="530" r="4" class="small"/><circle cx="290" cy="610" r="4"/><circle cx="365" cy="555" r="4"/>
+      <circle cx="690" cy="600" r="4"/><circle cx="760" cy="540" r="4" class="small"/><circle cx="850" cy="585" r="4"/><circle cx="910" cy="515" r="4" class="small"/>
+      <circle cx="370" cy="300" r="5"/><circle cx="430" cy="325" r="4" class="small"/><circle cx="500" cy="285" r="5"/><circle cx="570" cy="325" r="4" class="small"/><circle cx="630" cy="300" r="5"/><circle cx="455" cy="390" r="4" class="small"/><circle cx="500" cy="420" r="5"/><circle cx="545" cy="390" r="4" class="small"/>
+    </g>
+  </svg>
 
-<main id="scene">
-  <section class="card" aria-live="polite">
-    <div class="eyebrow">✦ sana özel ✦</div>
+  <div class="sparkle" style="left:18%;top:32%;animation-delay:.2s"></div>
+  <div class="sparkle" style="left:78%;top:39%;animation-delay:1.4s"></div>
+  <div class="sparkle" style="left:31%;top:76%;animation-delay:2.2s"></div>
+  <div class="sparkle" style="left:68%;top:80%;animation-delay:.8s"></div>
+
+  <main class="card" aria-live="polite">
     <p class="message" id="message">Bugün günlerden ne?</p>
     <div class="buttons" id="buttons"></div>
-    <div class="footnote">Biraz yıldız, biraz hatıra, bolca iyi ki. ✨</div>
-  </section>
-</main>
-
-<div id="music">
-  <p id="music-title">♫ Sana eşlik eden şarkılar</p>
-  <div id="player"></div>
-  <p id="music-hint">Şarkılar ilgili butona bastığında başlar.</p>
+    <button class="btn" id="replay">Tekrar dinle ♫</button>
+  </main>
 </div>
 
+<audio id="audioPlayer" preload="auto"></audio>
+
 <script>
-/* Üç YouTube videosu */
 const songs = {
-  first: "NE3x_sct784",
-  second: "gzqbGRvjGVk",
-  final: "h5oHhGlWKf0"
+  first: "sarki1.mp3.mp3",
+  second: "sarki2.mp3.mp3",
+  final: "sarki3.mp3.mp3"
 };
 
 const message = document.getElementById("message");
 const buttons = document.getElementById("buttons");
-const musicTitle = document.getElementById("music-title");
+const replay = document.getElementById("replay");
+const audioPlayer = document.getElementById("audioPlayer");
 
-let player = null;
-let apiReady = false;
-let pendingSong = null;
 let currentSong = null;
 
-/* Sayfaların akışı */
 const pages = {
   start: {
-    theme: "dark",
+    theme: "a1",
     text: "Bugün günlerden ne?",
-    buttons: [["29 Kasım ✨", "month"]]
+    buttons: [["29 Kasım", "month"]]
   },
   month: {
-    theme: "dark",
-    text: "Bugüne sadece 29 Kasım demek yakışmaz.\n\nBugün birisi doğmuş, iyi ki doğmuş. Dimi, çok şanslı birisi bence bu kişi?",
+    theme: "a1",
+    text: "Bugüne sadece 29 Kasım demek yakışmaz. Bugün birisi doğmuş, iyi ki doğmuş. Dimi, çok şanslı birisi bence bu kişi?",
     buttons: [["dimi ya", "birthdayYes"], ["yok bee", "no1"]]
   },
   no1: {
-    theme: "dark",
-    text: "Hadi oradan yalancı seni, doğru dürüst cevapla. 😌",
+    theme: "a1",
+    text: "Hadi oradan yalancı seni, doğru dürüst cevapla.",
     buttons: [["dimi ya", "birthdayYes"], ["yok bee", "no2"]]
   },
   no2: {
-    theme: "dark",
-    text: "Bu sefer yok bee yok mu? Noldu, tıkla hadi. 😂",
+    theme: "a1",
+    text: "Bu sefer yok bee yok mu? Noldu, tıkla hadi.",
     buttons: [["dimi ya", "birthdayYes"]]
   },
   wish: {
-    theme: "pink",
-    text: "Dilerim yeni yaşın sana tarifsiz mutluluklar, huzur dolu günler ve yüzünü hep güldürecek güzellikler getirir.\n\nKalbinden geçen tüm güzel dileklerin birer birer gerçeğe dönüşsün. Hayat bazen yorucu olsa da umarım karşına hep içini ısıtan insanlar ve sana iyi ki dedirten anılar çıkar.\n\nGülüşün hiç solmasın, kalbin hiçbir zaman güzelliklere olan inancını kaybetmesin. ❤️",
-    buttons: [["yiaaaa 💗", "surprise"]]
+    theme: "a2",
+    text: "Dilerim yeni yaşın sana tarifsiz mutluluklar, huzur dolu günler ve yüzünü hep güldürecek güzellikler getirir. Kalbinden geçen tüm güzel dileklerin birer birer gerçeğe dönüşsün. Hayat bazen yorucu olsa da umarım karşına hep içini ısıtan insanlar ve sana iyi ki dedirten anılar çıkar. Gülüşün hiç solmasın, kalbin hiçbir zaman güzelliklere olan inancını kaybetmesin.",
+    buttons: [["yiaaaa", "surprise"]]
   },
   surprise: {
-    theme: "dark",
-    text: "Beklemiyordun dimi? 🌙",
-    buttons: [["Evet, travmam tetiklendi! Bir daha olmasın!!", "nextSong"]]
+    theme: "a1",
+    text: "Beklemiyordun dimi",
+    buttons: [["Evet travmam tetiklendiği birdaha olmasın!!", "nextSong"]]
   },
   nextSong: {
-    theme: "dark",
-    text: "Aşırı kroca oldu ya... Tıkla bir daha, şu butona sinirim bozuldu. 😂",
-    buttons: [["aşırı kroca oldu ya, tıkla bir daha", "thirdSong"]]
+    theme: "a1",
+    text: "Aşırı kroca oldu ya tıkla birdaha şu butona sinirim bozuldu",
+    buttons: [["aşırı kroca oldu ya tıkla birdaha şu butona sinirim bozuldu", "thirdSong"]]
   },
   grown: {
-    theme: "dark",
+    theme: "a1",
     text: "Ulan büyüdün bee 🥹",
     buttons: [["valla yaa", "grownReply"]]
   },
   grownReply: {
-    theme: "dark",
-    text: "Valla yaa mı? Ulan daha yaşın kaç sahtekâr, hâlâ küçük civcivsin gözümde. Her zaman küçük kardeş olacaksın gözümde. :D",
-    buttons: [["yaaa söyleme öyle", "last"]]
+    theme: "a1",
+    text: "Valla yaa mı? Ulan daha yaşın kaç sahtekâr, hâlâ küçük civcivsin gözümde her zaman küçük kardeş olacaksın gözümde :D",
+    buttons: [["yaaa süyleme öyle", "last"]]
   },
   last: {
-    theme: "dark",
-    text: "Sus kız, konuşma. Şarkıyı dinle de overlok saatine sen de dahil ol. 💚",
-    buttons: [["Son şarkıyı tekrar başlat ♫", "replayFinal"]]
+    theme: "a1",
+    text: "Sus kız konuşma şarkıyı dinle de overlok saatine sende dahil ol",
+    buttons: []
   }
 };
 
 function render(name) {
-  const page = pages[name];
-  document.body.classList.toggle("pink-theme", page.theme === "pink");
-
-  /* Kartın geçiş animasyonunu yeniden oynat */
-  const card = document.querySelector(".card");
-  card.style.animation = "none";
-  void card.offsetWidth;
-  card.style.animation = "";
-
-  message.textContent = page.text;
+  const p = pages[name];
+  document.body.className = p.theme;
+  message.textContent = p.text;
   buttons.innerHTML = "";
+  replay.style.display = "none";
 
-  page.buttons.forEach(([label, action], index) => {
-    const btn = document.createElement("button");
-    btn.className = "btn" + (index === 1 ? " secondary" : "");
-    btn.textContent = label;
-    btn.addEventListener("click", () => act(action));
-    buttons.appendChild(btn);
+  p.buttons.forEach(([label, action], i) => {
+    const b = document.createElement("button");
+    b.className = "btn" + (p.buttons.length > 1 && i === 1 ? " secondary" : "");
+    b.textContent = label;
+    b.addEventListener("click", () => act(action));
+    buttons.appendChild(b);
   });
 }
 
 function playSong(which) {
   currentSong = which;
-  musicTitle.textContent = "♫ Şimdi çalıyor";
-  if (apiReady && player) {
-    player.loadVideoById({ videoId: songs[which], startSeconds: 0 });
-    player.playVideo();
-  } else {
-    pendingSong = which;
-    document.getElementById("music-hint").textContent =
-      "Müzik yükleniyor; birkaç saniye bekle.";
-  }
+  replay.style.display = "none";
+
+  audioPlayer.pause();
+  audioPlayer.src = songs[which];
+  audioPlayer.currentTime = 0;
+
+  audioPlayer.play().catch(error => {
+    console.log("Şarkı başlatılamadı:", error);
+  });
 }
 
 function act(action) {
   switch (action) {
-    case "month": render("month"); break;
-    case "birthdayYes": render("wish"); break;
-    case "no1": render("no1"); break;
-    case "no2": render("no2"); break;
+    case "month":
+      render("month");
+      break;
+
+    case "birthdayYes":
+      render("wish");
+      break;
+
+    case "no1":
+      render("no1");
+      break;
+
+    case "no2":
+      render("no2");
+      break;
+
     case "surprise":
       render("surprise");
       playSong("first");
       break;
+
     case "nextSong":
       render("nextSong");
       playSong("second");
       break;
+
     case "thirdSong":
       render("grown");
       playSong("final");
       break;
-    case "grownReply": render("grownReply"); break;
-    case "last": render("last"); break;
-    case "replayFinal": playSong("final"); break;
+
+    case "grownReply":
+      render("grownReply");
+      break;
+
+    case "last":
+      render("last");
+      break;
   }
 }
 
-/* Yıldızlı gökyüzü */
-const canvas = document.getElementById("stars");
-const ctx = canvas.getContext("2d");
-let starList = [];
-
-function resizeStars() {
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  canvas.width = innerWidth * dpr;
-  canvas.height = innerHeight * dpr;
-  canvas.style.width = innerWidth + "px";
-  canvas.style.height = innerHeight + "px";
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-  starList = Array.from({ length: Math.min(150, Math.floor(innerWidth / 7)) }, () => ({
-    x: Math.random() * innerWidth,
-    y: Math.random() * innerHeight,
-    r: Math.random() * 1.7 + .3,
-    a: Math.random(),
-    speed: Math.random() * .012 + .003
-  }));
-}
-
-function drawStars() {
-  ctx.clearRect(0, 0, innerWidth, innerHeight);
-  for (const s of starList) {
-    s.a += s.speed;
-    const alpha = .25 + (Math.sin(s.a) + 1) * .3;
-    ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(207,235,213,${alpha})`;
-    ctx.shadowBlur = 8;
-    ctx.shadowColor = "#a8d8b5";
-    ctx.fill();
+audioPlayer.addEventListener("ended", () => {
+  if (
+    currentSong === "final" &&
+    document.body.classList.contains("a1") &&
+    message.textContent === pages.last.text
+  ) {
+    replay.style.display = "block";
   }
-  ctx.shadowBlur = 0;
-  requestAnimationFrame(drawStars);
-}
+});
 
-window.addEventListener("resize", resizeStars);
-resizeStars();
-drawStars();
+audioPlayer.addEventListener("error", () => {
+  console.log("Ses dosyası yüklenemedi. Dosya adlarını ve GitHub yüklemesini kontrol et.");
+});
 
-/* YouTube müzik oynatıcısı */
-const tag = document.createElement("script");
-tag.src = "https://www.youtube.com/iframe_api";
-document.head.appendChild(tag);
-
-window.onYouTubeIframeAPIReady = function () {
-  player = new YT.Player("player", {
-    width: "200",
-    height: "113",
-    videoId: songs.first,
-    playerVars: {
-      autoplay: 0,
-      controls: 1,
-      playsinline: 1,
-      rel: 0
-    },
-    events: {
-      onReady: function () {
-        apiReady = true;
-        if (pendingSong) {
-          const song = pendingSong;
-          pendingSong = null;
-          player.loadVideoById({ videoId: songs[song], startSeconds: 0 });
-          player.playVideo();
-        }
-      },
-      onError: function () {
-        document.getElementById("music-hint").textContent =
-          "Bu video oynatılamadı; YouTube'da erişilebilirliğini kontrol et.";
-      }
-    }
-  });
-};
+replay.addEventListener("click", () => {
+  if (currentSong === "final") {
+    playSong("final");
+  }
+});
 
 render("start");
 </script>
