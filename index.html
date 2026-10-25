@@ -4,244 +4,283 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#171126">
-<title>İyi ki doğdun ✨</title>
+<title>İyi ki Doğdun ✨</title>
+
 <style>
-:root{--pink:#e8a9c4;--pink-light:#f3c8d9;--ink:#171019;--green:#a8d8b5}
-*{box-sizing:border-box}
-html,body{margin:0;min-height:100%;font-family:Georgia,"Times New Roman",serif}
-body{min-height:100vh;overflow:hidden;color:#f7eaf1;transition:background .7s ease}
-button{font:inherit;cursor:pointer;border:0;transition:transform .18s ease,filter .18s ease}
-button:hover{transform:translateY(-2px);filter:brightness(1.06)}
-button:active{transform:scale(.98)}
-#scene{position:relative;min-height:100vh;display:grid;place-items:center;padding:22px;isolation:isolate;overflow:hidden}
-.sky,.lines{position:absolute;inset:0;pointer-events:none;z-index:-2}
-body.a1{background:radial-gradient(ellipse at 50% 42%,#29203e 0%,#1b1530 48%,#100d1e 100%)}
-.sky{opacity:.95;background:
-radial-gradient(circle at 12% 18%,rgba(182,226,190,.65) 0 1px,transparent 2px),
-radial-gradient(circle at 78% 14%,rgba(234,211,136,.75) 0 1px,transparent 2px),
-radial-gradient(circle at 88% 73%,rgba(168,216,181,.55) 0 1px,transparent 2px),
-radial-gradient(circle at 23% 82%,rgba(234,211,136,.55) 0 1px,transparent 2px),
-radial-gradient(circle at 52% 9%,rgba(168,216,181,.6) 0 1px,transparent 2px);
-background-size:137px 151px,181px 167px,211px 193px,173px 187px,239px 223px}
-.star-map{position:absolute;inset:0;width:100%;height:100%;z-index:-1;opacity:.72;pointer-events:none}
-.star-map path{fill:none;stroke:rgba(168,216,181,.25);stroke-width:1}
-.star-map .heart-line{stroke:rgba(168,216,181,.36);stroke-width:1.15}
-.star-map circle{fill:#e9d38a;stroke:#a8d8b5;stroke-width:2;filter:drop-shadow(0 0 5px rgba(168,216,181,.4))}
-.star-map circle.small{fill:#a8d8b5;stroke:#dcebdc;stroke-width:1}
-.sparkle{position:absolute;width:3px;height:3px;border-radius:50%;background:#c5e7cb;box-shadow:0 0 8px #9ccda7;animation:twinkle 3.8s infinite ease-in-out}
-@keyframes twinkle{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:.9;transform:scale(1.35)}}
-body.a2{background:radial-gradient(ellipse at center,#171216 0%,#080709 75%)}
-.lines{z-index:-1;opacity:.48;background:repeating-conic-gradient(from 0deg at 50% 50%,transparent 0deg 8deg,rgba(222,153,184,.13) 8.15deg 8.3deg,transparent 8.45deg 16deg);mask-image:radial-gradient(ellipse at center,transparent 0%,black 45%,black 100%)}
-.card{width:min(760px,100%);position:relative;text-align:center;padding:clamp(26px,5vw,54px) clamp(20px,5vw,46px);border-radius:28px;animation:appear .55s ease both}
-.a1 .card{background:rgba(35,27,49,.78);border:1px solid rgba(177,220,185,.23);box-shadow:0 20px 70px rgba(0,0,0,.24),0 0 35px rgba(156,205,167,.06);backdrop-filter:blur(8px)}
-.a2 .card{background:rgba(224,157,186,.96);color:#171019;border:1px solid rgba(255,221,235,.8);box-shadow:0 20px 65px rgba(0,0,0,.4),0 0 35px rgba(224,157,186,.1);border-radius:48% 48% 35px 35px / 18% 18% 35px 35px}
-.message{font-size:clamp(1.2rem,2.8vw,1.8rem);line-height:1.65;white-space:pre-line;margin:0 auto 26px;max-width:650px;overflow-wrap:anywhere}
-.a1 .message{color:#f6eaf5;text-shadow:0 0 18px rgba(193,224,198,.12)}
-.a2 .message{color:#171019;font-size:clamp(1rem,2.3vw,1.35rem);line-height:1.75}
-.buttons{display:flex;justify-content:center;gap:13px;flex-wrap:wrap}
-.btn{padding:13px 23px;max-width:100%;border-radius:999px;background:var(--pink);color:#171019;box-shadow:0 6px 20px rgba(0,0,0,.14);font-weight:700;font-size:1rem;overflow-wrap:anywhere}
-.btn.secondary{background:rgba(232,169,196,.15);color:#f7eaf1;border:1px solid rgba(232,169,196,.65);box-shadow:none}
-.a2 .btn{background:#171019;color:#f3c8d9}
-.a2 .btn.secondary{background:rgba(23,16,25,.08);border:1px solid rgba(23,16,25,.45);color:#171019}
-#replay{display:none;margin:18px auto 0}
-@keyframes appear{from{opacity:0;transform:translateY(10px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
-@media(max-width:480px){.card{padding:28px 19px}.buttons{gap:10px}.btn{padding:12px 17px;font-size:.94rem}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px;
+    overflow: hidden;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    color: #f8e9ef;
+    background:
+        radial-gradient(ellipse at 15% 15%, #382346, transparent 45%),
+        radial-gradient(ellipse at 85% 85%, #233b4b, transparent 45%),
+        #090b18;
+}
+
+#stars {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    border-radius: 50%;
+    background: #ffe8f4;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: .25; transform: scale(.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+.card {
+    z-index: 1;
+    width: min(100%, 560px);
+    max-height: 92vh;
+    overflow-y: auto;
+    padding: 32px 24px;
+    text-align: center;
+    border: 1px solid #ffffff30;
+    border-radius: 25px;
+    background: rgba(17, 17, 37, .91);
+    box-shadow: 0 0 45px #e4a5d51c;
+    backdrop-filter: blur(12px);
+}
+
+h1 {
+    margin: 0 0 20px;
+    color: #f3c8dc;
+    font-size: clamp(25px, 6vw, 35px);
+}
+
+p {
+    margin: 0 0 24px;
+    color: #f0e5ed;
+    font-size: 17px;
+    line-height: 1.8;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+button {
+    display: inline-block;
+    max-width: 100%;
+    margin: 6px;
+    padding: 13px 19px;
+    border: 1px solid #ffffff55;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #e6b6d0, #c8b8e8);
+    color: #25192f;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    overflow-wrap: anywhere;
+    transition: transform .2s, box-shadow .2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px #e0add640;
+}
+
+.hidden { display: none !important; }
+
+.heart {
+    margin-bottom: 14px;
+    font-size: 30px;
+}
+
+.small {
+    margin-top: 18px;
+    color: #bdb0c9;
+    font-size: 12px;
+}
+
+@media (max-width: 450px) {
+    .card { padding: 26px 17px; }
+    p { font-size: 16px; }
+    button { width: 100%; margin: 6px 0; }
+}
 </style>
 </head>
-<body class="a1">
-<div id="scene">
-  <div class="sky"></div>
-  <div class="lines"></div>
 
-  <svg class="star-map" viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <g>
-      <path d="M120 155 L210 205 L290 145 L365 210 L430 175 M650 120 L710 180 L805 155 L870 235 M120 590 L210 530 L290 610 L365 555 M690 600 L760 540 L850 585 L910 515"/>
-      <path class="heart-line" d="M500 470 C455 420 370 370 370 300 C370 235 455 220 500 285 C545 220 630 235 630 300 C630 370 545 420 500 470 Z"/>
-      <path class="heart-line" d="M370 300 L430 325 L500 285 L570 325 L630 300 M430 325 L455 390 L500 420 L545 390 L570 325"/>
-      <circle cx="120" cy="155" r="4"/><circle cx="210" cy="205" r="4" class="small"/><circle cx="290" cy="145" r="4"/><circle cx="365" cy="210" r="4" class="small"/><circle cx="430" cy="175" r="4"/>
-      <circle cx="650" cy="120" r="4"/><circle cx="710" cy="180" r="4" class="small"/><circle cx="805" cy="155" r="4"/><circle cx="870" cy="235" r="4" class="small"/>
-      <circle cx="120" cy="590" r="4"/><circle cx="210" cy="530" r="4" class="small"/><circle cx="290" cy="610" r="4"/><circle cx="365" cy="555" r="4"/>
-      <circle cx="690" cy="600" r="4"/><circle cx="760" cy="540" r="4" class="small"/><circle cx="850" cy="585" r="4"/><circle cx="910" cy="515" r="4" class="small"/>
-      <circle cx="370" cy="300" r="5"/><circle cx="430" cy="325" r="4" class="small"/><circle cx="500" cy="285" r="5"/><circle cx="570" cy="325" r="4" class="small"/><circle cx="630" cy="300" r="5"/><circle cx="455" cy="390" r="4" class="small"/><circle cx="500" cy="420" r="5"/><circle cx="545" cy="390" r="4" class="small"/>
-    </g>
-  </svg>
+<body>
 
-  <div class="sparkle" style="left:18%;top:32%;animation-delay:.2s"></div>
-  <div class="sparkle" style="left:78%;top:39%;animation-delay:1.4s"></div>
-  <div class="sparkle" style="left:31%;top:76%;animation-delay:2.2s"></div>
-  <div class="sparkle" style="left:68%;top:80%;animation-delay:.8s"></div>
+<div id="stars"></div>
 
-  <main class="card" aria-live="polite">
-    <p class="message" id="message">Bugün günlerden ne?</p>
-    <div class="buttons" id="buttons"></div>
-    <button class="btn" id="replay">Tekrar dinle ♫</button>
-  </main>
-</div>
+<audio id="music" preload="auto"></audio>
 
-<audio id="audioPlayer" preload="auto"></audio>
+<main class="card">
+
+    <section id="start">
+        <div class="heart">✦ ✨ ✦</div>
+        <h1>Bir sorum var...</h1>
+        <p>Bugün günlerden ne?</p>
+        <button onclick="showPage('month')">Bir bakalım 👀</button>
+    </section>
+
+    <section id="month" class="hidden">
+        <h1>29 Kasım ✨</h1>
+        <p>Bugüne sadece 29 Kasım demek yakışmaz. Bugün birisi doğmuş, iyi ki doğmuş. Dimi, çok şanslı birisi bence bu kişi?</p>
+        <button onclick="showPage('wish')">Evettt 🥳</button>
+        <button onclick="showPage('no1')">Ne alaka ya?</button>
+    </section>
+
+    <section id="no1" class="hidden">
+        <h1>Hadi ama 😂</h1>
+        <p>Hadi oradan yalancı seni, doğru dürüst cevapla.</p>
+        <button onclick="showPage('wish')">Tamam tamam 😌</button>
+        <button onclick="showPage('no2')">Hayır yaa</button>
+    </section>
+
+    <section id="no2" class="hidden">
+        <h1>Son kararın mı? 👀</h1>
+        <p>Bu sefer yok bee yok mu? Noldu, tıkla hadi.</p>
+        <button onclick="showPage('wish')">Peki evet 😂</button>
+    </section>
+
+    <section id="wish" class="hidden">
+        <div class="heart">🌙</div>
+        <h1>İyi ki doğdun!</h1>
+        <p>Dilerim yeni yaşın sana tarifsiz mutluluklar, huzur dolu günler ve yüzünü hep güldürecek güzellikler getirir. Kalbinden geçen tüm güzel dileklerin birer birer gerçeğe dönüşsün. Hayat bazen yorucu olsa da umarım karşına hep içini ısıtan insanlar ve sana iyi ki dedirten anılar çıkar. Gülüşün hiç solmasın, kalbin hiçbir zaman güzelliklere olan inancını kaybetmesin.</p>
+        <button onclick="playSong('surprise', 'sarki1.mp3.mp3')">Yiaaaa 🥹</button>
+    </section>
+
+    <section id="surprise" class="hidden">
+        <div class="heart">🎁</div>
+        <h1>Bir sürpriz daha!</h1>
+        <p>Beklemiyordun dimi</p>
+        <button onclick="playSong('nextSong', 'sarki2.mp3.mp3')">Evet birdaha olmasın tramvam tetiklendi</button>
+    </section>
+
+    <section id="nextSong" class="hidden">
+        <div class="heart">🎶</div>
+        <h1>Bir tane daha...</h1>
+        <p>Aşırı kroca oldu ya tıkla birdaha şu butona sinirim bozuldu</p>
+        <button onclick="playSong('grown', 'sarki3.mp3.mp3')">Son bir kez daha 😂</button>
+    </section>
+
+    <section id="grown" class="hidden">
+        <div class="heart">🥹</div>
+        <h1>Ulan büyüdün be!</h1>
+        <p>Ulan büyüdün bee 🥹</p>
+        <button onclick="showPage('grownReply')">Eee, ne olmuş? 😎</button>
+    </section>
+
+    <section id="grownReply" class="hidden">
+        <div class="heart">💗</div>
+        <h1>Küçük civciv</h1>
+        <p>Valla yaa mı? Ulan daha yaşın kaç sahtekâr, hâlâ küçük civcivsin gözümde her zaman küçük kardeş olacaksın gözümde :D</p>
+        <button onclick="showPage('last')">Tamam sustum 😂</button>
+    </section>
+
+    <section id="last" class="hidden">
+        <div class="heart">🎵</div>
+        <h1>Son bir şey...</h1>
+        <p>Sus kız konuşma şarkıyı dinle de overlok saatine sende dahil ol</p>
+        <p id="musicStatus" class="small">Şarkı yükleniyor...</p>
+        <button id="replay" class="hidden" onclick="replaySong()">Şarkıyı tekrar dinle 🔁</button>
+    </section>
+
+</main>
 
 <script>
-const songs = {
-  first: "sarki1.mp3.mp3",
-  second: "sarki2.mp3.mp3",
-  final: "sarki3.mp3.mp3"
-};
+const music = document.getElementById("music");
+const musicStatus = document.getElementById("musicStatus");
+const replayButton = document.getElementById("replay");
 
-const message = document.getElementById("message");
-const buttons = document.getElementById("buttons");
-const replay = document.getElementById("replay");
-const audioPlayer = document.getElementById("audioPlayer");
+const songFiles = [
+    "sarki1.mp3.mp3",
+    "sarki2.mp3.mp3",
+    "sarki3.mp3.mp3"
+];
 
-let currentSong = null;
+let currentSong = "";
 
-const pages = {
-  start: {
-    theme: "a1",
-    text: "Bugün günlerden ne?",
-    buttons: [["29 Kasım", "month"]]
-  },
-  month: {
-    theme: "a1",
-    text: "Bugüne sadece 29 Kasım demek yakışmaz. Bugün birisi doğmuş, iyi ki doğmuş. Dimi, çok şanslı birisi bence bu kişi?",
-    buttons: [["dimi ya", "birthdayYes"], ["yok bee", "no1"]]
-  },
-  no1: {
-    theme: "a1",
-    text: "Hadi oradan yalancı seni, doğru dürüst cevapla.",
-    buttons: [["dimi ya", "birthdayYes"], ["yok bee", "no2"]]
-  },
-  no2: {
-    theme: "a1",
-    text: "Bu sefer yok bee yok mu? Noldu, tıkla hadi.",
-    buttons: [["dimi ya", "birthdayYes"]]
-  },
-  wish: {
-    theme: "a2",
-    text: "Dilerim yeni yaşın sana tarifsiz mutluluklar, huzur dolu günler ve yüzünü hep güldürecek güzellikler getirir. Kalbinden geçen tüm güzel dileklerin birer birer gerçeğe dönüşsün. Hayat bazen yorucu olsa da umarım karşına hep içini ısıtan insanlar ve sana iyi ki dedirten anılar çıkar. Gülüşün hiç solmasın, kalbin hiçbir zaman güzelliklere olan inancını kaybetmesin.",
-    buttons: [["yiaaaa", "surprise"]]
-  },
-  surprise: {
-    theme: "a1",
-    text: "Beklemiyordun dimi",
-    buttons: [["Evet birdaha olmasın tramvam tetiklendi", "nextSong"]]
-  },
-  nextSong: {
-    theme: "a1",
-    text: "Aşırı kroca oldu ya tıkla birdaha şu butona sinirim bozuldu",
-    buttons: [["aşırı kroca oldu ya tıkla birdaha şu butona sinirim bozuldu", "thirdSong"]]
-  },
-  grown: {
-    theme: "a1",
-    text: "Ulan büyüdün bee 🥹",
-    buttons: [["valla yaa", "grownReply"]]
-  },
-  grownReply: {
-    theme: "a1",
-    text: "Valla yaa mı? Ulan daha yaşın kaç sahtekâr, hâlâ küçük civcivsin gözümde her zaman küçük kardeş olacaksın gözümde :D",
-    buttons: [["yaaa süyleme öyle", "last"]]
-  },
-  last: {
-    theme: "a1",
-    text: "Sus kız konuşma şarkıyı dinle de overlok saatine sende dahil ol",
-    buttons: []
-  }
-};
+function showPage(pageId) {
+    document.querySelectorAll("main section").forEach(section => {
+        section.classList.add("hidden");
+    });
 
-function render(name) {
-  const p = pages[name];
-  document.body.className = p.theme;
-  message.textContent = p.text;
-  buttons.innerHTML = "";
-  replay.style.display = "none";
-
-  p.buttons.forEach(([label, action], i) => {
-    const b = document.createElement("button");
-    b.className = "btn" + (p.buttons.length > 1 && i === 1 ? " secondary" : "");
-    b.textContent = label;
-    b.addEventListener("click", () => act(action));
-    buttons.appendChild(b);
-  });
+    document.getElementById(pageId).classList.remove("hidden");
 }
 
-function playSong(which) {
-  currentSong = which;
-  replay.style.display = "none";
+function playSong(nextPage, fileName) {
+    showPage(nextPage);
+    currentSong = fileName;
 
-  audioPlayer.pause();
-  audioPlayer.src = songs[which];
-  audioPlayer.currentTime = 0;
+    music.pause();
+    music.currentTime = 0;
+    music.src = fileName;
+    music.load();
 
-  audioPlayer.play().catch(error => {
-    console.log("Şarkı başlatılamadı:", error);
-  });
+    replayButton.classList.add("hidden");
+
+    music.play().catch(() => {
+        if (nextPage === "last") {
+            musicStatus.textContent =
+                "Şarkı otomatik başlamadı. Tekrar dinle düğmesini kullanabilirsin.";
+            replayButton.classList.remove("hidden");
+        }
+    });
 }
 
-function act(action) {
-  switch (action) {
-    case "month":
-      render("month");
-      break;
+function replaySong() {
+    if (!currentSong) {
+        currentSong = songFiles[2];
+        music.src = currentSong;
+    }
 
-    case "birthdayYes":
-      render("wish");
-      break;
+    music.currentTime = 0;
 
-    case "no1":
-      render("no1");
-      break;
-
-    case "no2":
-      render("no2");
-      break;
-
-    case "surprise":
-      render("surprise");
-      playSong("first");
-      break;
-
-    case "nextSong":
-      render("nextSong");
-      playSong("second");
-      break;
-
-    case "thirdSong":
-      render("grown");
-      playSong("final");
-      break;
-
-    case "grownReply":
-      render("grownReply");
-      break;
-
-    case "last":
-      render("last");
-      break;
-  }
+    music.play().then(() => {
+        musicStatus.textContent = "Şarkı çalıyor 🎶";
+        replayButton.classList.add("hidden");
+    }).catch(() => {
+        musicStatus.textContent =
+            "Şarkı açılamadı. MP3 dosyasının adını ve konumunu kontrol et.";
+    });
 }
 
-audioPlayer.addEventListener("ended", () => {
-  if (
-    currentSong === "final" &&
-    document.body.classList.contains("a1") &&
-    message.textContent === pages.last.text
-  ) {
-    replay.style.display = "block";
-  }
+music.addEventListener("ended", () => {
+    if (!document.getElementById("last").classList.contains("hidden")) {
+        musicStatus.textContent = "Şarkı bitti ❤️";
+        replayButton.classList.remove("hidden");
+    }
 });
 
-audioPlayer.addEventListener("error", () => {
-  console.log("Ses dosyası yüklenemedi. Dosya adlarını ve GitHub yüklemesini kontrol et.");
+music.addEventListener("error", () => {
+    musicStatus.textContent =
+        "Şarkı yüklenemedi. MP3 dosyalarının adlarını kontrol et.";
 });
 
-replay.addEventListener("click", () => {
-  if (currentSong === "final") {
-    playSong("final");
-  }
-});
+const stars = document.getElementById("stars");
 
-render("start");
+for (let i = 0; i < 100; i++) {
+    const star = document.createElement("span");
+    star.className = "star";
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+
+    const size = Math.random() * 3 + 1;
+    star.style.width = size + "px";
+    star.style.height = size + "px";
+    star.style.animationDelay = Math.random() * 3 + "s";
+
+    stars.appendChild(star);
+}
 </script>
+
 </body>
 </html>
